@@ -149,6 +149,7 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
      *
      * \todo 
      * \li set chooser starting dir to the last used dir, or the path in the text box 
+     * \li add logic to select the shortest path relative to the project directory
      * 
      *
      * @param evt
@@ -170,6 +171,7 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
     /**
      *
      * \todo \li set chooser starting dir to the current project's dir + "documentation" if it exists, and just the project dir otherwise
+     * \li add logic to select the shortest path relative to the project directory
      *
      * @param evt
      */
@@ -190,6 +192,7 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
     /**
      *
      * \todo \li set chooser starting dir to the current project's dir + "documentation" if it exists, and just the project dir otherwise
+     * \li add logic to select the shortest path relative to the project directory
      *
      * @param evt
      */
