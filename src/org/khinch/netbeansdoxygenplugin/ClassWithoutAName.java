@@ -17,66 +17,86 @@ import org.openide.util.NbPreferences;
  * @author kieren
  */
 public class ClassWithoutAName {
-
-    private final String PROJECTDIRECTORY;
-    private final String DOXYGENBINARY;
-    private final String DOXYFILE;
-    private final String OUTPUTDIRECTORY;
+    
     private static final String FILESEPARATOR = Constants.FILESEPARATOR;
     private static final String LINESEPARATOR = Constants.LINESEPARATOR;
-    private static final String SOURCEPATH = FILESEPARATOR + "src";
-    
-    private String doxyfilePath;
-    private String outputDirectoryPath;
-    private String sourceDirectoryPath;
 
-    public ClassWithoutAName(String projectDirectory) {
+    private final String PROJECTDIRECTORY;
+    private final String PROJECTNAME;
+    private final String DOXYGENBINARY;
+    private final String OUTPUTDIRECTORY;
+    private final String DOXYFILE;
+    private final String SOURCEDIRECTORY;
+    private final String LOGO;
+    
+    private final Boolean SOURCEDIRECTORYRECURSIVE;
+    private final Boolean OUTPUTHTML;
+    private final Boolean OUTPUTLATEX;
+    private final Boolean OUTPUTMAN;
+    private final Boolean OUTPUTRTF;
+    private final Boolean OUTPUTXML;
+    
+    private String outputDirectoryPath;
+    private String doxyfilePath;
+    private String sourceDirectoryPath;
+    private String logoPath;
+    
+    /**
+     * \todo Write doc for ClassWithoutAName constructor. Hopefully after it's been given a sensible name. 
+     * 
+     * @param projectDirectory
+     * @param projectName 
+     */
+    public ClassWithoutAName(String projectDirectory, String projectName) {
         this.PROJECTDIRECTORY = projectDirectory;
+        this.PROJECTNAME = projectName;
         DOXYGENBINARY = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldDoxygenBinary", "");
-        DOXYFILE = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldDoxyfile", "");
         OUTPUTDIRECTORY = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldOutputDirectory", "");
+        DOXYFILE = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldDoxyfile", "");
+        SOURCEDIRECTORY = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldSourceDirectory", "");
+        LOGO = NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldLogo", "");
+        SOURCEDIRECTORYRECURSIVE = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxRecursiveSource", true);
+        OUTPUTHTML = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxHtml", true);
+        OUTPUTLATEX = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxLatex", true);
+        OUTPUTMAN = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxManPage", false);
+        OUTPUTRTF = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxRtf", false);
+        OUTPUTXML = NbPreferences.forModule(DoxygenSettingsPanel.class).getBoolean("checkboxXml", false);
     }
 
     /**
-     * \todo write doc
+     * \todo write doc for this method
      * @return 
      */
-    public Validator validateSettings() {
+    public Validator validateMandatorySettings() {
         
-        // Check inputs are not null or empty
-        if(DOXYGENBINARY == null | DOXYGENBINARY.isEmpty()) {
-            return new Validator(false, "Path to Doxygen binary file is empty.");
+        Validator validator = new Validator(true, "");
+        File doxygenBinaryFile;
+        
+        // Ensure that Doxygen binary field is not null or empty, and that a file exists with the supplied path
+        if (DOXYGENBINARY == null | DOXYGENBINARY.isEmpty()) {
+            validator.setValid(false);
+            validator.appendMessage("Path to Doxygen binary file is empty.");
+        } else {
+            doxygenBinaryFile = new File(DOXYGENBINARY);
+            if (!doxygenBinaryFile.exists()) {
+                validator.setValid(false);
+                validator.appendMessage("Path to Doxygen binary file is invalid.");
+            }
         }
-        if(DOXYFILE == null | DOXYFILE.isEmpty()) {
-            return new Validator(false, "Path to Doxyfile is empty.");
-        }
+        
+        // Ensure that output directory field is not null or empty
         if(OUTPUTDIRECTORY == null | OUTPUTDIRECTORY.isEmpty()) {
-            return new Validator(false, "Path to output directory is empty.");
-        }
-        
-        // Check all paths exist
-        buildPaths();
-        File doxygenBinaryFile = new File(DOXYGENBINARY);
-        File doxyfileFile = new File(doxyfilePath);
-        File outputDirectoryFile = new File(outputDirectoryPath);
-        
-        if(!doxygenBinaryFile.exists()) {
-            return new Validator(false, "Path to Doxygen binary file is invald.");
-        }
-        if(!doxyfileFile.exists()) {
-            return new Validator(false, "Path to Doxyfile file is invald.");
-        }
-        if(!outputDirectoryFile.exists()) {
-            return new Validator(false, "Path to Doxyfile file is invald.");
+            validator.setValid(false);
+            validator.appendMessage("Path to output directory is empty.");
         }
         
         //! \todo check to make sure path is actually the doxygen binary. Call "doxygen --help" and parse the first line or two for something useful
         
-        return new Validator(true, null); // No message needed if all is well.
+        return validator; // If all is well this returns "true" with no message. Otherwise, it returns false with all issues found. 
     }
     
     /**
-     * \todo doc for generateDocs (Oh! The irony.)
+     * \todo write document for generateDocs method (Oh! The irony.)
      * 
      * Discussion: input stream overrides vs Doxyfile overrides (spaces getting stripped from inputs by doxygen binary)
      * 
@@ -84,6 +104,8 @@ public class ClassWithoutAName {
      * 
      */
     public void generateDocs() {
+        
+        buildPaths();
         
         // Load contents of Doxyfile. This should hopefully never exception if the validator has been successfully called.
         String doxyfileContent = "";
@@ -124,11 +146,37 @@ public class ClassWithoutAName {
     }
     
     private void buildPaths() {
-        doxyfilePath = PROJECTDIRECTORY + FILESEPARATOR + DOXYFILE;
-        outputDirectoryPath = PROJECTDIRECTORY + FILESEPARATOR + OUTPUTDIRECTORY;
-        sourceDirectoryPath = PROJECTDIRECTORY + FILESEPARATOR + SOURCEPATH;
+        
+        outputDirectoryPath = PROJECTDIRECTORY + FILESEPARATOR + OUTPUTDIRECTORY; // We know this should be valid, as the validator should have been called
+        doxyfilePath = buildRelativePath(DOXYFILE, "Doxyfile");           // If either of these two are empty, they should be set to a default value
+        sourceDirectoryPath = buildRelativePath(SOURCEDIRECTORY, "src");  // <----
+        
+        if(LOGO != null && !LOGO.isEmpty()) // If this one is null or empty do nothing, as there is no logo to provide
+        {
+            logoPath = PROJECTDIRECTORY + FILESEPARATOR + LOGO;
+        }
         
         //! \todo normalise these paths to remove redundant information if possible
+    }
+    
+    /**
+     * If the supplied file path suffix is null, resort to the default suffix and build a path using the project
+     * directory as the prefix. 
+     * 
+     * @param suffix
+     * @param defaultSuffix
+     * @return 
+     */
+    private String buildRelativePath(String suffix, String defaultSuffix)
+    {
+        String result;
+        if(suffix != null && !suffix.isEmpty())
+        {
+            result = PROJECTDIRECTORY + FILESEPARATOR + suffix;
+        } else {
+            result = PROJECTDIRECTORY + FILESEPARATOR + defaultSuffix;
+        }
+        return result;
     }
 
 }
