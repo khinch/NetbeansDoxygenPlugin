@@ -24,9 +24,11 @@ public class ClassWithoutAName {
     private final String OUTPUTDIRECTORY;
     private static final String FILESEPARATOR = Constants.FILESEPARATOR;
     private static final String LINESEPARATOR = Constants.LINESEPARATOR;
+    private static final String SOURCEPATH = FILESEPARATOR + "src";
     
     private String doxyfilePath;
     private String outputDirectoryPath;
+    private String sourceDirectoryPath;
 
     public ClassWithoutAName(String projectDirectory) {
         this.PROJECTDIRECTORY = projectDirectory;
@@ -75,6 +77,11 @@ public class ClassWithoutAName {
     
     /**
      * \todo doc for generateDocs (Oh! The irony.)
+     * 
+     * Discussion: input stream overrides vs Doxyfile overrides (spaces getting stripped from inputs by doxygen binary)
+     * 
+     * Wiki: escape the override by adding a second parameter at the end of the file
+     * 
      */
     public void generateDocs() {
         
@@ -88,31 +95,29 @@ public class ClassWithoutAName {
         
         //! \todo Update this method to take account of other variable paths. E.g. CSS file, header, footer etc. 
         
-        // Build the overrides for project specific files. Start with a newline to make sure first override gets picked up. All subsequent overrides 
-        // should end with a newline too. 
-        StringBuilder overrides = new StringBuilder();
-        overrides.append(LINESEPARATOR); 
+        // Edit the doxyfile to apply the project specific overrides
+        doxyfileContent = doxyfileContent.replaceFirst("^OUTPUT_DIRECTORY[ \t]*=.*$", "OUTPUT_DIRECTORY=" + outputDirectoryPath);
+        doxyfileContent = doxyfileContent.replaceFirst("^INPUT[ \t]=.*$", "OUTPUT_DIRECTORY=" + sourceDirectoryPath);
         
-        // Override output directory
-        overrides.append("OUTPUT_DIRECTORY=");
-        overrides.append(outputDirectoryPath);
-        overrides.append(LINESEPARATOR);
         
-        // Potentially override other stuff like CSS files, HTML headers, HTML footers here
+        // end overrides
+        
+        // Potentially override other stuff like CSS files, HTML headers, HTML footers here. Maybe use a hashmap for these?
         
         // Output debug info for anyone that's interested
         System.out.println("Project directory: " + PROJECTDIRECTORY);
         System.out.println("Doxygen binary: " + DOXYGENBINARY);
-        System.out.println("Doxyfile: " + DOXYFILE);
-        System.out.println("Output directory: " + OUTPUTDIRECTORY);
+        System.out.println("Doxyfile: " + doxyfilePath);
+        System.out.println("Output directory: " + outputDirectoryPath);
+        System.out.println("Source directory: " + sourceDirectoryPath);
         
         /*
         This command should end up being the same as:
-        ( cat Doxyfile ; echo <param_overrides> ) | doxygen -
+        ( cat Doxyfile ) | doxygen -
         See here for more info: http://www.stack.nl/~dimitri/doxygen/manual/faq.html#faq_cmdline
         */
         try {
-            CommandUtils.runCommand(DOXYGENBINARY, "-", doxyfileContent + overrides.toString());
+            CommandUtils.runCommand(DOXYGENBINARY, "-", doxyfileContent);
         } catch (IOException ex) {
             Exceptions.printStackTrace(ex);
         }
@@ -121,6 +126,7 @@ public class ClassWithoutAName {
     private void buildPaths() {
         doxyfilePath = PROJECTDIRECTORY + FILESEPARATOR + DOXYFILE;
         outputDirectoryPath = PROJECTDIRECTORY + FILESEPARATOR + OUTPUTDIRECTORY;
+        sourceDirectoryPath = PROJECTDIRECTORY + FILESEPARATOR + SOURCEPATH;
         
         //! \todo normalise these paths to remove redundant information if possible
     }
