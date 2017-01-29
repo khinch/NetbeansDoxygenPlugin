@@ -24,7 +24,7 @@ public class Validator {
     }
     
     public void appendMessage(String message) {
-        this.message = this.message + "\n" + message;
+        this.message = this.message + message + "\n";
     }
     
     public Boolean isValid() {

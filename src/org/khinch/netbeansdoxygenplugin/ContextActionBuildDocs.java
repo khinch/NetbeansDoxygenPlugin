@@ -45,7 +45,7 @@ public class ContextActionBuildDocs implements ActionListener {
         // Validate inputs
         Validator inputsValid = classWithoutAName.validateMandatorySettings();
         if(!inputsValid.isValid()) {
-            JOptionPane.showMessageDialog(null, inputsValid.getmessage() + " Please check the settings panel.");
+            JOptionPane.showMessageDialog(null, inputsValid.getmessage() + "Please check the settings panel.");
             return; // No point in continuing if our inputs are invalid
         }
         
