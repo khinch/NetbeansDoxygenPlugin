@@ -6,25 +6,33 @@
 package org.khinch.netbeansdoxygenplugin;
 
 /**
- *
+ * \todo Write doc for Validator class
  * @author kieren
  */
 public class Validator {
     
-    private final Boolean VALID;
-    private final String MESSAGE;
+    private Boolean valid;
+    private String message;
     
     public Validator(Boolean valid, String message) {
-        VALID = valid;
-        MESSAGE = message;
+        this.valid = valid;
+        this.message = message;
+    }
+    
+    public void setValid(Boolean valid) {
+        this.valid = valid; 
+    }
+    
+    public void appendMessage(String message) {
+        this.message = this.message + message + "\n";
     }
     
     public Boolean isValid() {
-        return VALID;
+        return valid;
     }
     
     public String getmessage() {
-        return MESSAGE;
+        return message;
     }
     
 }
