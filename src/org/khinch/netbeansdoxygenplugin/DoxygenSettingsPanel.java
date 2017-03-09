@@ -51,22 +51,22 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
         labelDoxyfile = new javax.swing.JLabel();
         textFieldOutputDirectory = new javax.swing.JTextField();
         textFieldDoxyfile = new javax.swing.JTextField();
+        labelMandatoryFieldIndicator = new javax.swing.JLabel();
+        labelnstructions1 = new javax.swing.JLabel();
+        labelnstructions2 = new javax.swing.JLabel();
+        labelnstructions3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         labelSourceDirectory = new javax.swing.JLabel();
         textFieldSourceDirectory = new javax.swing.JTextField();
         checkboxRecursiveSource = new javax.swing.JCheckBox();
-        textFieldLogo = new javax.swing.JTextField();
         labelLogo = new javax.swing.JLabel();
+        textFieldLogo = new javax.swing.JTextField();
         checkboxHtml = new javax.swing.JCheckBox();
         checkboxLatex = new javax.swing.JCheckBox();
         checkboxManPage = new javax.swing.JCheckBox();
         checkboxRtf = new javax.swing.JCheckBox();
         checkboxXml = new javax.swing.JCheckBox();
-        labelMandatoryFieldIndicator = new javax.swing.JLabel();
-        labelnstructions1 = new javax.swing.JLabel();
-        labelnstructions2 = new javax.swing.JLabel();
-        labelnstructions3 = new javax.swing.JLabel();
-        labelnstructions4 = new javax.swing.JLabel();
-        labelnstructions5 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.jPanel1.border.title"))); // NOI18N
         jPanel1.setName("Settings"); // NOI18N
@@ -90,28 +90,13 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
 
         textFieldDoxyfile.setText(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.textFieldDoxyfile.text")); // NOI18N
 
-        org.openide.awt.Mnemonics.setLocalizedText(labelSourceDirectory, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelSourceDirectory.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(labelMandatoryFieldIndicator, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelMandatoryFieldIndicator.text")); // NOI18N
 
-        textFieldSourceDirectory.setText(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.textFieldSourceDirectory.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions1, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions1.text")); // NOI18N
 
-        checkboxRecursiveSource.setSelected(true);
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxRecursiveSource, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxRecursiveSource.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions2, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions2.text")); // NOI18N
 
-        textFieldLogo.setText(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.textFieldLogo.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelLogo, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelLogo.text")); // NOI18N
-
-        checkboxHtml.setSelected(true);
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxHtml, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxHtml.text")); // NOI18N
-
-        checkboxLatex.setSelected(true);
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxLatex, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxLatex.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxManPage, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxManPage.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxRtf, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxRtf.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(checkboxXml, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxXml.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions3, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions3.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,33 +109,20 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelDoxygenBinary)
                             .addComponent(labelOutputDirectory)
-                            .addComponent(labelDoxyfile)
-                            .addComponent(labelSourceDirectory)
-                            .addComponent(labelLogo))
+                            .addComponent(labelDoxyfile))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textFieldDoxyfile, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(textFieldDoxygenBinary, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buttonDoxygenBinaryBrowser))
-                            .addComponent(textFieldOutputDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(textFieldSourceDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkboxRecursiveSource))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(checkboxHtml)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkboxLatex)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkboxManPage)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkboxRtf)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkboxXml)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                            .addComponent(textFieldOutputDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelMandatoryFieldIndicator)
+                    .addComponent(labelnstructions1)
+                    .addComponent(labelnstructions2)
+                    .addComponent(labelnstructions3))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,36 +140,104 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDoxyfile)
                     .addComponent(textFieldDoxyfile, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(labelMandatoryFieldIndicator)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldSourceDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelnstructions1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelnstructions2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelnstructions3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.jPanel2.border.title"))); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(labelSourceDirectory, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelSourceDirectory.text")); // NOI18N
+
+        textFieldSourceDirectory.setText(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.textFieldSourceDirectory.text")); // NOI18N
+
+        checkboxRecursiveSource.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxRecursiveSource, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxRecursiveSource.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(labelLogo, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelLogo.text")); // NOI18N
+
+        textFieldLogo.setText(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.textFieldLogo.text")); // NOI18N
+
+        checkboxHtml.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxHtml, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxHtml.text")); // NOI18N
+
+        checkboxLatex.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxLatex, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxLatex.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxManPage, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxManPage.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxRtf, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxRtf.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(checkboxXml, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.checkboxXml.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(jCheckBox1, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.jCheckBox1.text")); // NOI18N
+        jCheckBox1.setActionCommand(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.jCheckBox1.actionCommand")); // NOI18N
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSourceDirectory)
+                            .addComponent(labelLogo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(textFieldSourceDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(checkboxRecursiveSource))
+                            .addComponent(textFieldLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(checkboxHtml)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkboxLatex)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkboxManPage)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkboxRtf)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkboxXml))
+                    .addComponent(jCheckBox1))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSourceDirectory)
+                    .addComponent(textFieldSourceDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkboxRecursiveSource))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelLogo))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelLogo)
+                    .addComponent(textFieldLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkboxHtml)
                     .addComponent(checkboxLatex)
                     .addComponent(checkboxManPage)
                     .addComponent(checkboxRtf)
                     .addComponent(checkboxXml))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelMandatoryFieldIndicator, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelMandatoryFieldIndicator.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions1, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions1.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions2, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions2.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions3, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions3.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions4, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions4.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(labelnstructions5, org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.labelnstructions5.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -207,12 +247,7 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMandatoryFieldIndicator)
-                    .addComponent(labelnstructions1)
-                    .addComponent(labelnstructions2)
-                    .addComponent(labelnstructions3)
-                    .addComponent(labelnstructions4)
-                    .addComponent(labelnstructions5))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -221,18 +256,8 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelMandatoryFieldIndicator)
-                .addGap(18, 18, 18)
-                .addComponent(labelnstructions1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelnstructions2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelnstructions3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelnstructions4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelnstructions5)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(349, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(DoxygenSettingsPanel.class, "DoxygenSettingsPanel.Settings.AccessibleContext.accessibleName")); // NOI18N
@@ -260,6 +285,10 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_buttonDoxygenBinaryBrowserActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     void load() {
         textFieldDoxygenBinary.setText(NbPreferences.forModule(DoxygenSettingsPanel.class).get("textFieldDoxygenBinary", ""));
@@ -309,7 +338,9 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkboxRecursiveSource;
     private javax.swing.JCheckBox checkboxRtf;
     private javax.swing.JCheckBox checkboxXml;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelDoxyfile;
     private javax.swing.JLabel labelDoxygenBinary;
     private javax.swing.JLabel labelLogo;
@@ -319,8 +350,6 @@ final class DoxygenSettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelnstructions1;
     private javax.swing.JLabel labelnstructions2;
     private javax.swing.JLabel labelnstructions3;
-    private javax.swing.JLabel labelnstructions4;
-    private javax.swing.JLabel labelnstructions5;
     private javax.swing.JTextField textFieldDoxyfile;
     private javax.swing.JTextField textFieldDoxygenBinary;
     private javax.swing.JTextField textFieldLogo;
